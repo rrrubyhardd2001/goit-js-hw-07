@@ -4,5 +4,9 @@ console.log(inputFolder);
 console.log(outputFolder);
 inputFolder.addEventListener("input", () => {
   const rezult = inputFolder.value.trim();
-  outputFolder.textContent = rezult;
+  if (rezult) {
+    outputFolder.textContent = rezult
+  } else {
+    outputFolder.textContent = "Anonymous"
+  }
 });
