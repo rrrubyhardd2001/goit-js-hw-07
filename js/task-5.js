@@ -7,8 +7,8 @@ const difColor = document.querySelector(".change-color");
 console.log(difColor);
 const onChangeColor = (event) => {
   const hexColorResult = getRandomHexColor();
-  const newColor = getRandomHexColor();
-  document.body.style.backgroundColor = newColor;
-  document.querySelector(".color").textContent = newColor;
+  document.body.style.backgroundColor = hexColorResult;
+  let colorSpan = document.querySelector(".color");
+  colorSpan.textContent = hexColorResult;
 };
 difColor.addEventListener("click", onChangeColor);
