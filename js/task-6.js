@@ -4,41 +4,40 @@ function getRandomHexColor() {
     .padStart(6, 0)}`;
 }
 
+const mainInput = document.querySelector('#controls input')
+const createBtn = document.querySelector('button[data-create]')
+const destroyBtn = document.querySelector('button[data-destroy]')
+
 function createBoxes(amount) {
-  const boxesContainer = document.getElementById("boxes");
-  boxesContainer.innerHTML = "";
-  const fragment = document.createDocumentFragment();
-
-  for (let i = 0; i < amount; i++) {
-    const box = document.createElement("div");
-    const size = 30 + i * 10;
-    box.style.width = `${size}px`;
-    box.style.height = `${size}px`;
-    box.style.backgroundColor = getRandomHexColor();
-    fragment.appendChild(box);
+  const boxFolder = document.getElementById('boxes');
+  boxFolder.innerHTML = "";
+  let fragment = document.createDocumentFragment()
+  let boxSize = 30;
+  for (i = 0; i < amount; i++) {
+    let boxWhoops = document.createElement('div');
+    boxSize += 10;
+    boxWhoops.style.width = `${boxSize}px`;
+    boxWhoops.style.height = `${boxSize}px`;
+    boxWhoops.style.backgroundColor = getRandomHexColor();
+    fragment.appendChild(boxWhoops)
   }
-
-  boxesContainer.appendChild(fragment);
+  boxFolder.appendChild(fragment)
 }
 
-function destroyBoxes() {
-  const boxesContainer = document.getElementById("boxes");
-  boxesContainer.innerHTML = "";
-}
-
-const input = document.querySelector("#controls input");
-const createButton = document.querySelector("button[data-create]");
-const destroyButton = document.querySelector("button[data-destroy]");
-
-createButton.addEventListener("click", () => {
-  const amount = parseInt(input.value);
-
+createBtn.addEventListener('click', () =>  {
+  let amount = mainInput.value;
   if (amount >= 1 && amount <= 100) {
     createBoxes(amount);
-    input.value = "";
+    mainInput.value = '';
+  } else {
+    alert("Write number from 1 to 100")
   }
 });
 
-destroyButton.addEventListener("click", () => {
-  destroyBoxes();
-});
+function destroyBoxes() {
+  const boxFolder = document.getElementById('boxes')
+  boxFolder.innerHTML = "";
+}
+destroyBtn.addEventListener('click', () => {
+  destroyBoxes()
+})
