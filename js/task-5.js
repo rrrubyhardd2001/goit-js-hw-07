@@ -3,12 +3,12 @@ function getRandomHexColor() {
     .toString(16)
     .padStart(6, 0)}`;
 }
-const difColor = document.querySelector(".change-color");
-console.log(difColor);
-const onChangeColor = (event) => {
-  const hexColorResult = getRandomHexColor();
-  document.body.style.backgroundColor = hexColorResult;
+
+const dfntColor = document.querySelector(".change-color");
+const onChangeeColor = () => {
+  const resColor = getRandomHexColor();
+  document.body.style.backgroundColor = resColor;
   let colorSpan = document.querySelector(".color");
-  colorSpan.textContent = hexColorResult;
+  colorSpan.textContent = resColor;
 };
-difColor.addEventListener("click", onChangeColor);
+dfntColor.addEventListener("click", onChangeeColor);
